@@ -31,7 +31,7 @@
   _Działa: `php/upsert.php`_
 - [ ] Statystyki (najczęściej wypożyczana książka, użytkownik z największą liczbą wypożyczeń, liczba przetrzymanych książek)  
   _Brak – do zrobienia_
-- [ ] Blokada wypożyczeń dla użytkowników z więcej niż 2 przetrzymanymi książkami  
+- [x] Blokada wypożyczeń dla użytkowników z więcej niż 2 przetrzymanymi książkami  
   _Brak – do zrobienia_
 - [ ] Własne pomysły i usprawnienia  
   _Brak – do zrobienia_
