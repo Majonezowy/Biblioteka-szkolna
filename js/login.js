@@ -1,11 +1,4 @@
-const alertBox = document.querySelector('.alert');
-const alertBoxMessage = document.querySelector('.alert-message');
 const form = document.getElementById("form");
-
-function showAlert(message) {
-    alertBoxMessage.textContent = message;
-    alertBox.classList.add('show');
-}
 
 form.addEventListener('submit', async (e) => {
     e.preventDefault();

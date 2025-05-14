@@ -25,3 +25,34 @@ text {
     color: var(--light-color);
 }
 
+.alert {
+    position: fixed;
+    bottom: -100px;
+    right: 20px;
+    padding: 20px;
+    background-color: var(--danger-color);
+    color: white;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: bottom 0.5s ease-in-out;
+}
+
+.alert.show {
+    bottom: 20px;
+}
+
+.closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.closebtn:hover {
+    color: black;
+}

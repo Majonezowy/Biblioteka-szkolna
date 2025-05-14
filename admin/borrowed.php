@@ -37,6 +37,7 @@
             <th>Tytuł</th>
             <th>Osoba wypożyczająca</th>
             <th>Data wypożyczenia</th>
+            <th>Termin zwrotu</th>
             <th>Akcja</th>
         </tr>
         <?php
@@ -60,6 +61,7 @@
                     $userRow = $userResult->fetch_assoc();
                     echo "<td>" . htmlspecialchars($userRow['imie'] . ' ' . $userRow['nazwisko']) . "</td>";
                     echo "<td>" . htmlspecialchars($row['data_wypozyczenia']) . "</td>";
+                    echo "<td>" . htmlspecialchars($row['termin_zwrotu']) . "</td>";
                     echo "<td>
                         <div class='action-buttons'>
                             <a href='../php/zwroc.php?id=" . $row['id'] . "' class='fa fa-undo'> Zwróć</a>
@@ -68,7 +70,7 @@
                     echo "</tr>";
                 }
             } else {
-                echo "<tr><td colspan='4'>Brak książek w bazie danych.</td></tr>";
+                echo "<tr><td colspan='4'>Brak wypożyczonych książek.</td></tr>";
             }
         ?>
 </body>

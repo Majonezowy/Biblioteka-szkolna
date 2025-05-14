@@ -70,5 +70,25 @@
                 echo "<tr><td colspan='4'>Brak książek w bazie danych.</td></tr>";
             }
         ?>
+
+    </table>
+    <div class="alert">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        <span class="alert-message"></span>
+    </div>
+
+    <?php if (isset($_GET['message'])): ?>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const alertBox = document.querySelector('.alert');
+            const alertBoxMessage = document.querySelector('.alert-message');
+            alertBoxMessage.textContent = <?= json_encode($_GET['message']) ?>;
+            alertBox.style.backgroundColor = <?= json_encode($_GET['l'] == 0 ? 'var(--success-color)' : ($_GET['l'] == 1 ? 'var(--warning-color)' : 'var(--danger-color)')) ?>;
+            alertBox.classList.add('show');
+        });
+    </script>
+    <?php endif; ?>
+    
+    <script src="../js/main.js"></script>
 </body>
 </html>
