@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,8 +23,8 @@
     ?>
 
     <nav class="navbar">
-        <a class="active" href="index.php"><i class="fa fa-fw fa-book"></i> Książki</a>
-        <a href="#"><i class="fa fa-fw fa-list-alt"></i> Wypożyczone książki</a>
+        <a href="index.php"><i class="fa fa-fw fa-book"></i> Książki</a>
+        <a class="active" href="#"><i class="fa fa-fw fa-list-alt"></i> Wypożyczone książki</a>
         <a href="#"><i class="fa fa-fw fa-user"></i> Użytkownicy</a>
         <a href="#"><i class="fa fa-fw fa-cog"></i> Ustawienia</a>
         <a href="../php/logout.php" class="split"><i class="fa fa-fw fa-sign-out"></i> Wyloguj się</a>
@@ -62,7 +62,7 @@
                     echo "<td>" . htmlspecialchars($row['data_wypozyczenia']) . "</td>";
                     echo "<td>
                         <div class='action-buttons'>
-                            <a href='../php/edit.php?id=" . $row['id'] . "' class='fa fa-undo'> Zwróć</a>
+                            <a href='../php/zwroc.php?id=" . $row['id'] . "' class='fa fa-undo'> Zwróć</a>
                         </div>
                     </td>";
                     echo "</tr>";

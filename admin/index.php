@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,8 +30,15 @@
         <a href="../php/logout.php" class="split"><i class="fa fa-fw fa-sign-out"></i> Wyloguj się</a>
         <a href="#" class="split"><?= $_SESSION['imie'] . ' ' . $_SESSION['nazwisko'] ?></a>
     </nav>
+    
+    <div class="header-bar">
+        <h2>Dostępne książki</h2>
+        <button class="add-button" onclick="window.location.href='../php/upsert.php'">
+            <i class="fa fa-plus"></i> Dodaj książkę
+        </button>
+    </div>
 
-    <h2>Dostępne książki</h2>
+    
     <table>
         <tr>
             <th>Tytuł</th>
@@ -52,7 +59,7 @@
                     echo "<td>" . htmlspecialchars($row['rok_wydania']) . "</td>";
                     echo "<td>
                         <div class='action-buttons'>
-                            <a href='../php/edit.php?id=" . $row['id'] . "' class='fa fa-pencil'> Edytuj</a>
+                            <a href='../php/upsert.php?id=" . $row['id'] . "' class='fa fa-pencil'> Edytuj</a>
                             <a href='../php/delete.php?id=" . $row['id'] . "' class='fa fa-trash'> Usuń</a>
                             <a href='../php/borrow.php?id=" . $row['id'] . "' class='fa fa-book'> Wypożycz</a>
                         </div>
