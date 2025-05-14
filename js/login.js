@@ -1,11 +1,13 @@
+const alertBox = document.querySelector('.alert');
+const alertBoxMessage = document.querySelector('.alert-message');
+const form = document.getElementById("form");
+
 function showAlert(message) {
-    const alertBox = document.querySelector('.alert');
-    const alertBoxMessage = document.querySelector('.alert-message');
     alertBoxMessage.textContent = message;
     alertBox.classList.add('show');
 }
 
-document.getElementById("form").addEventListener('submit', async (e) => {
+form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     const email = form.email.value;
@@ -16,8 +18,8 @@ document.getElementById("form").addEventListener('submit', async (e) => {
 
         if (response.data.success) {
             setTimeout(() => {
-                window.location.href = 'index.html';
-            }, 2000);
+                window.location.href = (response.data.isAdmin) ? 'admin/index.php' : 'dashboard/index.php';
+            }, 500);
         }
 
     } catch (error) {

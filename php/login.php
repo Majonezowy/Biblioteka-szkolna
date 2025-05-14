@@ -18,8 +18,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $user = $result->fetch_assoc();
 
         if (password_verify($password, $user['password'])) {
+            $_SESSION['user_id'] = $user['id'];
             $_SESSION['email'] = $user['email'];
-            echo json_encode(['success' => true, 'message' => 'Login successful']);
+            $_SESSION['isAdmin'] = $user['isAdmin'];
+            $_SESSION['imie'] = $user['imie'];
+            $_SESSION['nazwisko'] = $user['nazwisko'];
+            echo json_encode(['success' => true, 'isAdmin' => $user['isAdmin'], 'message' => 'Login successful']);
         } else {
             echo json_encode(['success' => false, 'message' => 'Invalid password']);
         }

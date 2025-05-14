@@ -22,9 +22,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         exit;
     }
 
-    $stmt = $conn->prepare("INSERT INTO users (imie, nazwisko, email, password, klasa) VALUES (?, ?, ?, ?, ?)");
+    $sql = "SELECT * FROM users";
+    $stmt = $conn->prepare($sql);
+
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $userCount = $result->num_rows;
+    $isAdmin = ($userCount == 0) ? 1 : 0;
+
+    $stmt = $conn->prepare("INSERT INTO users (imie, nazwisko, email, password, klasa, isAdmin) VALUES (?, ?, ?, ?, ?)");
     $hashed_password = password_hash($password, PASSWORD_BCRYPT);
-    $stmt->bind_param("sssss", $imie, $nazwisko, $email, $hashed_password, $klasa);
+
+    $stmt->bind_param("sssss", $imie, $nazwisko, $email, $hashed_password, $klasa, $isAdmin);
     $stmt->execute();
     $stmt->close();
 

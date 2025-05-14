@@ -1,0 +1,109 @@
+.navbar {
+  width: 100%;
+  background-color: var(--dark-color);
+  overflow: auto;
+}
+
+.navbar a {
+  float: left;
+  text-align: center;
+  padding: 12px;
+  color: white;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.navbar a:hover {
+  background-color: #000;
+}
+
+.navbar a.split {
+  float: right;
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.active {
+  background-color: var(--primary-color);
+}
+
+@media screen and (max-width: 500px) {
+  .navbar a {
+    float: none;
+    display: block;
+  }
+}
+
+h2 {
+  color: var(--light-color);
+  margin-top: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  color: var(--light-color);
+  margin-top: 20px;
+}
+
+table th, table td {
+    border: 1px solid var(--primary-color);
+    padding: 10px;
+    text-align: left;
+}
+
+table th {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+table tr:nth-child(even) {
+    background-color: var(--dark-color);
+}
+
+table tr:hover {
+    background-color: var(--light-color);
+    color: var(--dark-color);
+    transition: background 0.2s, color 0.2s;
+}
+
+a {
+    color: var(--info-color);
+    text-decoration: none;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.action-buttons a {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 6px 12px;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background-color 0.2s;
+}
+
+table td a:hover {
+    background-color: var(--primary-color);
+    color: #000;
+    text-decoration: none;
+}
+
+table td a.fa-pencil:hover {
+    background-color: #4caf50;
+}
+
+table td a.fa-trash:hover {
+    background-color: #f44336;
+}
+
+table td a.fa-book:hover {
+    background-color: #2196f3;
+}
