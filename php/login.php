@@ -23,6 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_SESSION['isAdmin'] = $user['isAdmin'];
             $_SESSION['imie'] = $user['imie'];
             $_SESSION['nazwisko'] = $user['nazwisko'];
+            $_SESSION['id_klasa'] = $user['id_klasa'];
             echo json_encode(['success' => true, 'isAdmin' => $user['isAdmin'], 'message' => 'Login successful']);
         } else {
             echo json_encode(['success' => false, 'message' => 'Invalid password']);

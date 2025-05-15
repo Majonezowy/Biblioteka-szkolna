@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wypożyczanie</title>
     <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" href="../css/upsert.css">
 </head>
 <body>
@@ -60,6 +61,13 @@
         $result = $conn->query("SELECT * FROM wypozyczenia WHERE id_uzytkownika = $id_uzytkownika");
         if ($result && $result->num_rows >= 2) {
             header('Location: ../admin/index.php?message=' . urlencode('Użytkownik osiągnął limit wypożyczeń.') . '&l=1');
+            exit();
+        }
+
+        $stmt = $conn->prepare("UPDATE ksiazki SET dostepna = 0 WHERE id = ?");
+        $stmt->bind_param("i", $id);
+        if (!$stmt->execute()) {
+            header('Location: ../admin/index.php?message=' . urlencode('Nie można zaktualizować dostępności książki.') . '&l=2');
             exit();
         }
 

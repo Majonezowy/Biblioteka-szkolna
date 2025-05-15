@@ -10,21 +10,21 @@
 
 ## Tydzień 2
 - [x] Strona edycji danych użytkownika  
-  _Brak pliku – funkcja do zrobienia_
+  _Działa: `dashboard/settings.php` – zmiana klasy i hasła_
 - [x] Strona "Moje wypożyczenia" dla uczniów  
-  _Brak pliku – funkcja do zrobienia_
+  _Działa: `dashboard/index.php` – lista wypożyczeń i alerty o przetrzymaniu_
 - [x] Dodawanie i usuwanie książek (bibliotekarz)  
   _Działa: dodawanie/edycja (`php/upsert.php`), usuwanie (`php/delete.php`)_
 - [x] Realizacja wypożyczenia (bibliotekarz)  
-  _Działa: przycisk "Wypożycz" w panelu admina, ale plik `php/borrow.php` jest pusty – funkcja niezaimplementowana_
-- [ ] Alerty o przetrzymanych książkach  
-  _Brak – do zrobienia_
-- [ ] Panel przetrzymanych książek dla bibliotekarza (szczegóły i kary)  
-  _Brak – do zrobienia_
+  _Działa: przycisk "Wypożycz" w panelu admina, obsługa w `php/borrow.php` (limit wypożyczeń, zmiana dostępności)_
+- [x] Alerty o przetrzymanych książkach  
+  _Działa: alerty na stronie ucznia (`dashboard/index.php`)_
+- [x] Panel przetrzymanych książek dla bibliotekarza (szczegóły i kary)  
+  _Działa: tabela w `admin/borrowed.php` (kara 10gr/dzień)_
 
 ## Tydzień 3
 - [x] Zwracanie książek (bibliotekarz)  
-  _Działa: przycisk "Zwróć" w `admin/borrowed.php` (zakładamy, że `php/zwroc.php` działa)_
+  _Działa: przycisk "Zwróć" w `admin/borrowed.php`, obsługa w `php/zwroc.php`_
 - [x] Lista aktualnie wypożyczonych książek (bibliotekarz)  
   _Działa: `admin/borrowed.php`_
 - [x] Edycja danych książki (bibliotekarz)  
@@ -32,7 +32,7 @@
 - [ ] Statystyki (najczęściej wypożyczana książka, użytkownik z największą liczbą wypożyczeń, liczba przetrzymanych książek)  
   _Brak – do zrobienia_
 - [x] Blokada wypożyczeń dla użytkowników z więcej niż 2 przetrzymanymi książkami  
-  _Brak – do zrobienia_
+  _Działa: blokada w `php/borrow.php` (limit wypożyczeń)_
 - [ ] Własne pomysły i usprawnienia  
   _Brak – do zrobienia_
 
@@ -46,5 +46,5 @@
 
 ## Podsumowanie
 
-- **Działa:** logowanie, rejestracja, lista książek, edycja i usuwanie książek, lista wypożyczeń, zwracanie książek.
-- **Nie działa / brak:** wypożyczanie książek (`php/borrow.php` pusty), edycja danych użytkownika, moje wypożyczenia, alerty i panel przetrzymań, statystyki, blokady, dokumentacja.
+- **Działa:** logowanie, rejestracja, lista książek, edycja i usuwanie książek, wypożyczanie i zwracanie książek, lista wypożyczeń, alerty o przetrzymaniu, panel przetrzymań, blokada wypożyczeń, edycja danych użytkownika.
+- **Nie działa / brak:** statystyki, własne usprawnienia, dokumentacja, prezentacja.

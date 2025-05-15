@@ -25,14 +25,20 @@
     <nav class="navbar">
         <a class="active" href="index.php"><i class="fa fa-fw fa-book"></i> Książki</a>
         <a href="borrowed.php"><i class="fa fa-fw fa-list-alt"></i> Wypożyczone książki</a>
-        <a href="#"><i class="fa fa-fw fa-user"></i> Użytkownicy</a>
-        <a href="#"><i class="fa fa-fw fa-cog"></i> Ustawienia</a>
+        <a href="users.php"><i class="fa fa-fw fa-user"></i> Użytkownicy</a>
+        <a href="stats.php"><i class="fa fa-fw fa-calculator"></i> Statystyki</a>
         <a href="../php/logout.php" class="split"><i class="fa fa-fw fa-sign-out"></i> Wyloguj się</a>
         <a href="#" class="split"><?= $_SESSION['imie'] . ' ' . $_SESSION['nazwisko'] ?></a>
     </nav>
     
+    <?php
+        $sql = "SELECT * FROM ksiazki WHERE dostepna = 1 ORDER BY tytul ASC";
+        $result = $conn->query($sql);
+        $dostepne = $result->num_rows;
+    ?>
+
     <div class="header-bar">
-        <h2>Dostępne książki</h2>
+        <h2>Dostępne książki (<?=$dostepne?>)</h2>
         <button class="add-button" onclick="window.location.href='../php/upsert.php'">
             <i class="fa fa-plus"></i> Dodaj książkę
         </button>
@@ -48,9 +54,7 @@
             <th>Akcja</th>
         </tr>
         <?php
-            $sql = "SELECT * FROM ksiazki";
-            $result = $conn->query($sql);
-            if ($result->num_rows > 0) {
+            if ($dostepne > 0) {
                 while($row = $result->fetch_assoc()) {
                     echo "<tr>";
                     echo "<td>" . htmlspecialchars($row['tytul']) . "</td>";
@@ -70,7 +74,48 @@
                 echo "<tr><td colspan='4'>Brak książek w bazie danych.</td></tr>";
             }
         ?>
+    </table>
 
+    <?php
+        $sql = "SELECT * FROM ksiazki";
+        $result = $conn->query($sql);
+        $wszystkie = $result->num_rows;
+    ?>
+
+    <div class="header-bar">
+        <h2>Wszystkie książki (<?=$wszystkie?>)</h2>
+    </div>
+
+    
+    <table>
+        <tr>
+            <th>Tytuł</th>
+            <th>Autor</th>
+            <th>Gatunek</th>
+            <th>Rok wydania</th>
+            <th>Akcja</th>
+        </tr>
+        <?php
+            
+            if ($wszystkie > 0) {
+                while($row = $result->fetch_assoc()) {
+                    echo "<tr>";
+                    echo "<td>" . htmlspecialchars($row['tytul']) . "</td>";
+                    echo "<td>" . htmlspecialchars($row['autor']) . "</td>";
+                    echo "<td>" . htmlspecialchars($row['kategoria']) . "</td>";
+                    echo "<td>" . htmlspecialchars($row['rok_wydania']) . "</td>";
+                    echo "<td>
+                        <div class='action-buttons'>
+                            <a href='../php/upsert.php?id=" . $row['id'] . "' class='fa fa-pencil'> Edytuj</a>
+                            <a href='../php/delete.php?id=" . $row['id'] . "' class='fa fa-trash'> Usuń</a>
+                        </div>
+                    </td>";
+                    echo "</tr>";
+                }
+            } else {
+                echo "<tr><td colspan='4'>Brak książek w bazie danych.</td></tr>";
+            }
+        ?>
     </table>
     <div class="alert">
         <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>

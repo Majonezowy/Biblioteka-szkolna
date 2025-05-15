@@ -72,14 +72,24 @@
         if ($id) {
             $stmt = $conn->prepare("UPDATE ksiazki SET tytul = ?, autor = ?, kategoria = ?, rok_wydania = ? WHERE id = ?");
             $stmt->bind_param("ssssi", $tytul, $autor, $kategoria, $rok_wydania, $id);
+            if ($stmt->execute()) {
+                header('Location: ../admin/index.php?message=' . urlencode('Książka została zaktualizowana pomyślnie.') . '&l=0');
+            } else {
+                header('Location: ../admin/index.php?message=' . urlencode('Wystąpił błąd podczas aktualizacji książki.') . '&l=2');
+            }
             $stmt->close();
         } else {
             $stmt = $conn->prepare("INSERT INTO ksiazki (tytul, autor, kategoria, rok_wydania, dostepna) VALUES (?, ?, ?, ?, 1)");
             $stmt->bind_param("ssss", $tytul, $autor, $kategoria, $rok_wydania);
+            if ($stmt->execute()) {
+                header('Location: ../admin/index.php?message=' . urlencode('Książka została dodana pomyślnie.') . '&l=0');
+            } else {
+                header('Location: ../admin/index.php?message=' . urlencode('Wystąpił błąd podczas dodawania książki.') . '&l=2');
+            }
             $stmt->close();
         }
 
-        header('Location: ../admin/index.php');
+        
         exit();
     }
 ?>
