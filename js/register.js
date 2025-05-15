@@ -25,7 +25,7 @@ document.getElementById("form").addEventListener('submit', async (e) => {
 
         if (response.data.success) {
             setTimeout(() => {
-                window.location.href = 'login.html';
+                window.location.href = 'login.php';
             }, 200);
         }
 

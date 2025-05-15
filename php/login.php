@@ -3,10 +3,8 @@ require_once 'db.php';
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $data = json_decode(file_get_contents("php://input"), true);
-
-    $email = $data['email'] ?? '';
-    $password = $data['password'] ?? '';
+    $email = $_POST['email'] ?? '';
+    $password = $_POST['password'] ?? '';
 
     $sql = "SELECT * FROM users WHERE email = ?";
     $stmt = $conn->prepare($sql);
@@ -24,14 +22,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_SESSION['imie'] = $user['imie'];
             $_SESSION['nazwisko'] = $user['nazwisko'];
             $_SESSION['id_klasa'] = $user['id_klasa'];
-            echo json_encode(['success' => true, 'isAdmin' => $user['isAdmin'], 'message' => 'Login successful']);
+            header('Location: ../admin/index.php?message=' . urlencode('Zalogowano pomyślnie.') . '&l=0');
+            $stmt->close();
+            exit();
         } else {
-            echo json_encode(['success' => false, 'message' => 'Invalid password']);
+            header('Location: ../login.php?message=' . urlencode('Nieprawidłowe hasło.') . '&l=1');
+            $stmt->close();
+            exit();
         }
     } else {
-        echo json_encode(['success' => false, 'message' => 'Invalid email']);
+        header('Location: ../login.php?message=' . urlencode('Nie znaleziono użytkownika o podanym adresie email.') . '&l=2');
+        $stmt->close();
+        exit();
     }
-
-    $stmt->close();
 }
 ?>

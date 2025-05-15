@@ -29,8 +29,8 @@
   _Działa: `admin/borrowed.php`_
 - [x] Edycja danych książki (bibliotekarz)  
   _Działa: `php/upsert.php`_
-- [ ] Statystyki (najczęściej wypożyczana książka, użytkownik z największą liczbą wypożyczeń, liczba przetrzymanych książek)  
-  _Brak – do zrobienia_
+- [x] Statystyki (najczęściej wypożyczana książka, użytkownik z największą liczbą wypożyczeń, liczba przetrzymanych książek)  
+  _W `stats.php` uzywam bliblioteki Chart.js aby wyswietlic w ladnym formacie dane_
 - [x] Blokada wypożyczeń dla użytkowników z więcej niż 2 przetrzymanymi książkami  
   _Działa: blokada w `php/borrow.php` (limit wypożyczeń)_
 - [ ] Własne pomysły i usprawnienia  
@@ -47,4 +47,4 @@
 ## Podsumowanie
 
 - **Działa:** logowanie, rejestracja, lista książek, edycja i usuwanie książek, wypożyczanie i zwracanie książek, lista wypożyczeń, alerty o przetrzymaniu, panel przetrzymań, blokada wypożyczeń, edycja danych użytkownika.
-- **Nie działa / brak:** statystyki, własne usprawnienia, dokumentacja, prezentacja.
+- **Nie działa / brak:** własne usprawnienia, dokumentacja, prezentacja.

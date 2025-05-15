@@ -12,7 +12,7 @@
         require_once '../php/db.php'; 
         session_start();
         if (!isset($_SESSION['email'])) {
-            header('Location: ../login.html');
+            header('Location: ../login.php');
             exit();
         }
         if (!isset($_SESSION['isAdmin']) || $_SESSION['isAdmin'] != 1) {

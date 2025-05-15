@@ -3,13 +3,12 @@ require_once 'db.php';
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $data = json_decode(file_get_contents("php://input"), true);
 
-    $imie = $data['imie'] ?? '';
-    $nazwisko = $data['nazwisko'] ?? '';
-    $email = $data['email'] ?? '';
-    $password = $data['password'] ?? '';
-    $klasa = $data['klasa'] ?? '';
+    $imie = $_POST['imie'] ?? '';
+    $nazwisko = $_POST['nazwisko'] ?? '';
+    $email = $_POST['email'] ?? '';
+    $password = $_POST['password'] ?? '';
+    $klasa = $_POST['klasa'] ?? '';
 
     $stmt = $conn->prepare("SELECT * FROM users WHERE email = ?");
     $stmt->bind_param("s", $email);
@@ -17,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $result = $stmt->get_result();
 
     if ($result->num_rows > 0) {
-        echo json_encode(['success' => false, 'message' => 'Email already exists']);
+        header('Location: ../register.php?message=' . urlencode('Użytkownik o podanym adresie email już istnieje.') . '&l=1');
         $stmt->close();
         exit;
     }
@@ -37,6 +36,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt->execute();
     $stmt->close();
 
-    echo json_encode(['success' => true, 'message' => 'Registration successful']);
+    header('Location: ../login.php?message=' . urlencode('Rejestracja zakończona sukcesem. Możesz się teraz zalogować.') . '&l=0');
 }
 ?>
