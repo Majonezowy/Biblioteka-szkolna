@@ -90,15 +90,6 @@ CREATE TABLE `users` (
   `id_klasa` int(11) NOT NULL,
   `isAdmin` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
-
---
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`id`, `email`, `password`, `imie`, `nazwisko`, `id_klasa`, `isAdmin`) VALUES
-(2, 'titapiotr@gmail.com', '$2y$10$zhOZAm/omVaripYogRdB9uJF1h6O4o4slDVS.1/Xxov8BS2xfHt9i', 'Piotr', 'Maras', 1, 1),
-(3, 'marcin@dubiel.com', '$2y$10$Eq5VwkCizm/Y.TJjcxWqSugxiLpUWlTv32Cv8hiVN2XFmePYZpGvK', 'Marcin', 'Dubiel', 4, 0);
-
 -- --------------------------------------------------------
 
 --
