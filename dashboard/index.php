@@ -30,7 +30,7 @@
     </nav>
 
     <?php
-        $sql = "SELECT * FROM wypozyczenia WHERE id_uzytkownika = ? AND termin_zwrotu < CURDATE()";
+        $sql = "SELECT * FROM wypozyczenia WHERE id_uzytkownika = ? AND termin_zwrotu < CURDATE() AND oddana = 0";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("i", $_SESSION['user_id']);
         $stmt->execute();
@@ -64,7 +64,7 @@
             <th>Data wypożyczenia</th>
         </tr>
         <?php
-            $sql = "SELECT * FROM wypozyczenia WHERE id_uzytkownika = ?";
+            $sql = "SELECT * FROM wypozyczenia WHERE id_uzytkownika = ? AND oddana = 0";
             $stmt = $conn->prepare($sql);
             $stmt->bind_param("i", $_SESSION['user_id']);
             $stmt->execute();

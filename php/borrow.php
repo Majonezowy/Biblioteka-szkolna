@@ -28,7 +28,7 @@
     <select name="id_uzytkownika" required>
         <option value="">Wybierz użytkownika</option>
         <?php
-            $sql = "SELECT * FROM users";
+            $sql = "SELECT * FROM users WHERE isAdmin = 0 ORDER BY imie ASC";
             $result = $conn->query($sql);
             if ($result->num_rows > 0) {
                 while($row = $result->fetch_assoc()) {
@@ -58,7 +58,7 @@
             exit();
         }
 
-        $result = $conn->query("SELECT * FROM wypozyczenia WHERE id_uzytkownika = $id_uzytkownika");
+        $result = $conn->query("SELECT * FROM wypozyczenia WHERE id_uzytkownika = $id_uzytkownika AND oddana = 0");
         if ($result && $result->num_rows >= 2) {
             header('Location: ../admin/index.php?message=' . urlencode('Użytkownik osiągnął limit wypożyczeń.') . '&l=1');
             exit();
