@@ -1,3 +1,17 @@
+## Instalacja
+
+1. Sklonuj repozytorium:
+
+    ```bash
+    git clone https://github.com/Majonezowy/Biblioteka-szkolna.git
+    ```
+
+2. Zaimportuj bazę danych z pliku `biblioteka.sql` do swojego serwera MySQL.
+
+3. Skonfiguruj połączenie z bazą danych w pliku `php/db.php`.
+
+4. Uruchom aplikację na lokalnym serwerze WWW (np. XAMPP, WAMP, Laragon).
+
 <details>
   <summary><strong>📚 Postęp projektu – Biblioteka szkolna</strong></summary>
 
@@ -45,7 +59,7 @@
 
   <h2>Tydzień 4</h2>
   <ul>
-    <li>[ ] Dokumentacja projektu  
+    <li>[x] Dokumentacja projektu  
       <br><em>Brak – do zrobienia</em></li>
     <li>[ ] Prezentacja projektu nauczycielowi  
       <br><em>Brak – do zrobienia</em></li>
