@@ -34,12 +34,16 @@
 
                 <label for="klasa">Klasa</label><br>
                 <select id="klasa" name="klasa" required>
-                    <option value="1A">1A</option>
-                    <option value="1B">1B</option>
-                    <option value="2A">2A</option>
-                    <option value="2B">2B</option>
-                    <option value="3A">3A</option>
-                    <option value="3B">3B</option>
+                    <option value="" disabled selected>Wybierz klasę</option>
+                    <?php
+                        $sql = "SELECT * FROM klasy ORDER BY klasa ASC";
+                        $result = $conn->query($sql);
+                        if ($result->num_rows > 0) {
+                            while($row = $result->fetch_assoc()) {
+                                echo "<option value='" . htmlspecialchars($row['id']) . "'>" . htmlspecialchars($row['klasa']) . "</option>";
+                            }
+                        }
+                    ?>
                 </select>
                 <br><br>
 
